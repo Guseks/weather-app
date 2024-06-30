@@ -126,8 +126,8 @@ export function getIndexOfday(todaysDate, weatherDate, currentDay){
   return indexOfDay;
 }
 
-export async function getCoordinates(location){
-  const responseCoords = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${API_KEY}`);
+export async function getCoordinates(city){
+  const responseCoords = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`);
   const latitude = responseCoords.data[0].lat;
   const longitude = responseCoords.data[0].lon;
 
