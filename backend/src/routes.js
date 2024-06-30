@@ -21,7 +21,8 @@ API URL: https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exc
 
 router.get('/weather', async (req, res, next) => {
   try {
-    const city = req.body.city;
+    //console.log(params);
+    const city = "London";
     if(!city){
       throw new Error("City name is required");
     }

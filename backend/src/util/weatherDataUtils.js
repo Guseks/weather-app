@@ -73,17 +73,14 @@ export function createDataObject(weatherDataDays){
     const weatherDate = parseInt(filteredDays[0].date.split("-")[2]);
     const weatherMonth = parseInt(filteredDays[0].date.split("-")[1]) - 1;
 
-    
-
-    //const indexOfDay = weatherDate - todaysDate + currentDay.getDay() > 6 ? weatherDate - todaysDate ;
 
     const dailyData = {
       date: `${days[getIndexOfday(todaysDate, weatherDate, currentDay)]} ${filteredDays[0].date.split("-")[2]} ${months[weatherMonth]}`,
-      maxTemp: maxTempDays[index],
-      minTemp: minTempDays[index],
+      maxTemp: maxTempDays[index].toString(),
+      minTemp: minTempDays[index].toString(),
       icon: filteredDays[0].icon,
-      weather: filteredDays[0].weather,
-      windSpeed: filteredDays[0].windSpeed,
+      weather: filteredDays[0].weather.toString(),
+      windSpeed: filteredDays[0].windSpeed.toString(),
     }
 
     dailyWeatherData.push(dailyData);
