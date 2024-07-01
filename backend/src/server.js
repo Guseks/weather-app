@@ -1,5 +1,4 @@
 import express from 'express';
-import axios from 'axios';
 import cors from 'cors';
 import router from "./routes.js"
 import { errorHandler } from './middleware/errorHandler.js'
@@ -15,6 +14,9 @@ app.use("/", router);
 app.use(errorHandler);
 const PORT = process.env.PORT || 3000;
 
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+

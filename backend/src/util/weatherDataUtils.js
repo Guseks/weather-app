@@ -67,7 +67,6 @@ export function createDataObject(weatherDataDays){
       }
     
     });
-    console.log(filteredDays);
     const todaysDate = currentDay.getDate();
     const weatherDate = parseInt(filteredDays[0].date.split("-")[2]);
     const weatherMonth = parseInt(filteredDays[0].date.split("-")[1]) - 1;
