@@ -43,7 +43,6 @@ export function getWeatherDataDays(weatherData){
   }
   weatherDataDays.shift();
   return weatherDataDays;
-
   
 }
 
@@ -56,10 +55,10 @@ export function createDataObject(weatherDataDays){
   
   let weatherToday = false;
   let dailyWeatherData = [];
-  
+
   weatherDataDays.forEach((day, index) => {
     const filteredDays = day.filter((element) => {
-      if(element.date.split("-")[2] !== currentDay.getDate().toString()){
+      if(parseInt(element.date.split("-")[2]) !== currentDay.getDate()){
         return element.time === "15:00:00";
       }
       else if(!weatherToday){
@@ -68,7 +67,7 @@ export function createDataObject(weatherDataDays){
       }
     
     });
-    
+    console.log(filteredDays);
     const todaysDate = currentDay.getDate();
     const weatherDate = parseInt(filteredDays[0].date.split("-")[2]);
     const weatherMonth = parseInt(filteredDays[0].date.split("-")[1]) - 1;
@@ -79,7 +78,7 @@ export function createDataObject(weatherDataDays){
       maxTemp: maxTempDays[index].toString(),
       minTemp: minTempDays[index].toString(),
       icon: filteredDays[0].icon,
-      weather: filteredDays[0].weather.toString(),
+      weatherDescription: filteredDays[0].weather.description,
       windSpeed: filteredDays[0].windSpeed.toString(),
     }
 

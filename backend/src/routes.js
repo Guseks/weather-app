@@ -5,24 +5,11 @@ import { createWeatherData, getWeatherDataDays, createDataObject, getCoordinates
 
 const router = express.Router();
 
-/* 
-TODO: Create route for getting weather data from OpenWeatherMap API
-
-STEPS:
-TODO: Extract data from frontend request  - DONE!
-TODO: Convert city name to geo coordinates using Geocoder API (Look up how) - DONE! 
-TODO: Make request to API, analyze returned data to find suitable format to return.  - DONE!
-
-TODO: Put utility functions for handling data in separate file - DONE!
-
-API URL: https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
-
-*/
 
 router.get('/weather', async (req, res, next) => {
   try {
-    //console.log(params);
-    const city = "London";
+    const city = req.query.city;
+    
     if(!city){
       throw new Error("City name is required");
     }
@@ -32,7 +19,7 @@ router.get('/weather', async (req, res, next) => {
     const weatherDataDays = getWeatherDataDays(weatherData);
    
     res.status(200).json({
-      data: createDataObject(weatherDataDays)
+      weather: createDataObject(weatherDataDays)
     })
    
   }
