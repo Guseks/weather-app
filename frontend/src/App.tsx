@@ -30,7 +30,9 @@ function App() {
   }
 
   async function getNewWeather(inputValue: string) {
-    const response = await axios.get("http://localhost:3000/weather", {
+    const BASE_BACKEND_URL = import.meta.env.VITE_BASE_BACKEND_URL;
+
+    const response = await axios.get(`${BASE_BACKEND_URL}/weather`, {
       params: { city: inputValue },
     });
     console.log(response.data.weather);
