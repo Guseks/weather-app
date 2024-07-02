@@ -101,7 +101,7 @@ export async function getWeatherData(latitude, longitude){
 
 export function getIndexOfday(todaysDate, weatherDate, currentDay){
   const daysDifference = weatherDate - todaysDate;
-  const currentDayOfWeek = currentDay.getDay();
+  const currentDayOfWeek = currentDay.getDay() - 1;
 
   // Calculate the index of the day of the week for the weather forecast
   let indexOfDay = currentDayOfWeek + daysDifference;
