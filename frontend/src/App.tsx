@@ -30,7 +30,7 @@ function App() {
   }
 
   async function getNewWeather(inputValue: string) {
-    const BASE_BACKEND_URL = import.meta.env.VITE_TEST_BASE_BACKEND_URL;
+    const BASE_BACKEND_URL = import.meta.env.VITE_BASE_BACKEND_URL;
 
     const response = await axios.get(`${BASE_BACKEND_URL}/weather`, {
       params: { city: inputValue },
