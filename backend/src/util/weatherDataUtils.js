@@ -102,6 +102,7 @@ export async function getWeatherData(latitude, longitude){
 export function getIndexOfday(todaysDate, weatherDate, currentDay){
   const daysDifference = weatherDate - todaysDate;
   const currentDayOfWeek = currentDay.getDay() - 1;
+  //console.log(currentDay.getDay());
 
   // Calculate the index of the day of the week for the weather forecast
   let indexOfDay = currentDayOfWeek + daysDifference;
@@ -110,14 +111,19 @@ export function getIndexOfday(todaysDate, weatherDate, currentDay){
   if (indexOfDay > 6) {
     indexOfDay -= 7;
   }
-  
+
   // Adjust the index if it's less than 0, happens on change of month
   if(indexOfDay < 0){
+    if(indexOfDay === -1){
+      indexOfDay = 6;
+    }
+    else if(daysDifference < 7){
+      indexOfDay = daysDifference + todaysDate;
+    }
     
-    indexOfDay = daysDifference + todaysDate;
     //console.log(`indexOfDay: ${indexOfDay}, daysDifference: ${daysDifference}, currentDay: ${currentDayOfWeek}`);
   }
-
+  console.log(`indexOfDay: ${indexOfDay}, daysDifference: ${daysDifference}`)
   return indexOfDay;
 }
 

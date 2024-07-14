@@ -30,12 +30,11 @@ function App() {
   }
 
   async function getNewWeather(inputValue: string) {
-    const BASE_BACKEND_URL = import.meta.env.VITE_BASE_BACKEND_URL;
+    const BASE_BACKEND_URL = import.meta.env.VITE_TEST_BASE_BACKEND_URL;
 
     const response = await axios.get(`${BASE_BACKEND_URL}/weather`, {
       params: { city: inputValue },
     });
-    console.log(response.data.weather);
     setWeatherData(
       response.data.weather.map((item: WeatherData) => ({
         ...item,
@@ -53,7 +52,7 @@ function App() {
       <p className="font-bold text-5xl">Weather App</p>
 
       <div className="w-6/12 border-2 border-solid flex flex-col gap-2 bg-white bg-opacity-40 border-stone-800 rounded-lg p-5 ">
-        <span className="font-bold text-black flex border-black border-b-2 border-solid border-t-0 border-r-0 border-l-0 px-5 text-xl py-3 gap-5">
+        <span className="font-bold text-black flex  px-5 text-xl py-3 gap-5">
           Current city:
           <span>{`${city}`}</span>
         </span>
